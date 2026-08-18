@@ -103,6 +103,30 @@ guess, not a live ping measurement, so try neighbours if the pick feels bad.
 
 ## Install
 
+### One line, no build
+
+If Equicord is already installed, this swaps in a prebuilt Equicord that has the
+plugin in it. No Node, no pnpm, no cloning. PowerShell:
+
+```powershell
+Get-Process *Discord* | Stop-Process -Force; irm https://github.com/IPedrax/RegionSwapper/releases/latest/download/equicord.asar -OutFile "$env:APPDATA\Equicord\equicord.asar"
+```
+
+or cmd, with Discord closed:
+
+```bat
+curl -L -o "%APPDATA%\Equicord\equicord.asar" https://github.com/IPedrax/RegionSwapper/releases/latest/download/equicord.asar
+```
+
+Start Discord and enable **RegionSwapper** in Equicord settings.
+
+Every stock Equicord plugin is still in that build and your settings file isn't
+touched, but it does pin Equicord to the version the release was built from.
+Equicord's own installer or updater overwrites it, and you re-run the line above.
+
+### From source
+
+
 Works on **Vencord** and on **Equicord**, which builds `src/userplugins` the same way.
 Either one needs a **source install**: the installer's prebuilt `dist` can't load
 custom plugins.
