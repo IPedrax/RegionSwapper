@@ -1,5 +1,7 @@
 # RegionSwapper
 
+A plugin for [Vencord](https://vencord.dev) and [Equicord](https://github.com/Equicord/Equicord).
+
 Pick one voice region in the plugin settings and every call and voice channel you
 join moves to it. Or right-click a single channel and pick a region just for that one.
 
@@ -101,16 +103,23 @@ guess, not a live ping measurement, so try neighbours if the pick feels bad.
 
 ## Install
 
-Custom plugins need a **source install** of Vencord. The installer build in
-`%APPDATA%\Vencord\dist` cannot load them.
+Works on **Vencord** and on **Equicord**, which builds `src/userplugins` the same way.
+Either one needs a **source install**: the installer's prebuilt `dist` can't load
+custom plugins.
+
+Vencord:
 
 ```bash
-git clone https://github.com/Vendicated/Vencord
-cd Vencord
-pnpm i
+git clone https://github.com/Vendicated/Vencord && cd Vencord && pnpm i
 ```
 
-Then clone this repo into `src/userplugins`:
+or Equicord:
+
+```bash
+git clone https://github.com/Equicord/Equicord && cd Equicord && pnpm i
+```
+
+Then, from that folder, clone this repo into `src/userplugins`:
 
 ```bash
 git clone https://github.com/IPedrax/RegionSwapper src/userplugins/RegionSwapper
@@ -123,8 +132,10 @@ pnpm build
 pnpm inject
 ```
 
-Restart Discord and enable **RegionSwapper** in Vencord settings.
+Close Discord fully before `pnpm inject`, then start it and enable **RegionSwapper**
+in the mod's settings.
 
+To update: `git pull` inside `src/userplugins/RegionSwapper`, then `pnpm build`.
 While iterating, `pnpm watch` rebuilds on save (Ctrl+R in Discord to reload).
 
 ## Files
