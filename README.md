@@ -107,33 +107,32 @@ Works on **Vencord** and on **Equicord**, which builds `src/userplugins` the sam
 Either one needs a **source install**: the installer's prebuilt `dist` can't load
 custom plugins.
 
+Close Discord fully first, then paste one line.
+
+Equicord:
+
+```bash
+git clone https://github.com/Equicord/Equicord && cd Equicord && pnpm i && git clone https://github.com/IPedrax/RegionSwapper src/userplugins/RegionSwapper && pnpm build && pnpm inject
+```
+
 Vencord:
 
 ```bash
-git clone https://github.com/Vendicated/Vencord && cd Vencord && pnpm i
+git clone https://github.com/Vendicated/Vencord && cd Vencord && pnpm i && git clone https://github.com/IPedrax/RegionSwapper src/userplugins/RegionSwapper && pnpm build && pnpm inject
 ```
 
-or Equicord:
+On PowerShell, `&&` doesn't chain, so run it as one `;`-separated line instead:
 
-```bash
-git clone https://github.com/Equicord/Equicord && cd Equicord && pnpm i
+```powershell
+git clone https://github.com/Equicord/Equicord; cd Equicord; pnpm i; git clone https://github.com/IPedrax/RegionSwapper src/userplugins/RegionSwapper; pnpm build; pnpm inject
 ```
 
-Then, from that folder, clone this repo into `src/userplugins`:
+`pnpm inject` asks which Discord build to patch and refuses while Discord is open.
+Start Discord afterwards and enable **RegionSwapper** in the mod's settings.
 
-```bash
-git clone https://github.com/IPedrax/RegionSwapper src/userplugins/RegionSwapper
-```
-
-and build:
-
-```bash
-pnpm build
-pnpm inject
-```
-
-Close Discord fully before `pnpm inject`, then start it and enable **RegionSwapper**
-in the mod's settings.
+Vencord and Equicord patch the same files, so only one can be installed at a time,
+and they keep separate settings folders. Switching mods means setting the plugin up
+again.
 
 To update: `git pull` inside `src/userplugins/RegionSwapper`, then `pnpm build`.
 While iterating, `pnpm watch` rebuilds on save (Ctrl+R in Discord to reload).
